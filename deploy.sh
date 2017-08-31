@@ -120,7 +120,7 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
 fi
 
 # 4. Build the Angular app (production mode)
-if [ -e "$DEPLOYMENT_TARGET/node_modules" ]; then
+if [ -e "$DEPLOYMENT_TARGET/.angular-cli.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   eval $NPM_CMD run build-prod
   exitWithMessageOnError "npm run build-prod failed"
