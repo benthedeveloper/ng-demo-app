@@ -44,7 +44,3 @@ Thumbs.db
 
 # Project specific files/folders
 .env
-
-# Deployment
-.deployment
-deploy.sh
