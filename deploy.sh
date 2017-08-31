@@ -109,11 +109,12 @@ fi
 # 2. Select node version
 selectNodeVersion
 
-# 3. Install npm packages, and Angular CLI from devDependencies
+# 3. Install npm packages, and @angular/cli + @angular/compiler-cli from devDependencies
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   eval $NPM_CMD install --production
   eval $NPM_CMD install --only=dev @angular/cli
+  eval $NPM_CMD install --only=dev @angular/compiler-cli
   exitWithMessageOnError "npm install failed"
   cd - > /dev/null
 fi
