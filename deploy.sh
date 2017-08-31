@@ -113,8 +113,15 @@ selectNodeVersion
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   eval $NPM_CMD install --production
+  exitWithMessageOnError "npm install failed"
+  cd - > /dev/null
+fi
+
+# 4. Build the Angular app
+if [ -e "$DEPLOYMENT_TARGET/node_modules" ]; then
+  cd "$DEPLOYMENT_TARGET"
   eval $NPM_CMD run build-prod
-  exitWithMessageOnError "npm failed"
+  exitWithMessageOnError "npm run build-prod failed"
   cd - > /dev/null
 fi
 
