@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  azureTenant: "AZURE_TENANT_HERE",
-  azureClientId: "CLIENT_ID_HERE"
+  azureTenant: 'DEV_AZURE_TENANT_HERE',
+  azureClientId: 'DEV_AZURE_CLIENT_HERE'
 };
