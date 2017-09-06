@@ -116,6 +116,8 @@ if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   eval $NPM_CMD install --only=dev @angular/cli
   eval $NPM_CMD install --only=dev @angular/compiler-cli
   eval $NPM_CMD install --only=dev ts-node
+  eval $NPM_CMD install --only=dev typescript
+  eval $NPM_CMD install --only=dev yargs
   exitWithMessageOnError "npm install failed"
   cd - > /dev/null
 fi
