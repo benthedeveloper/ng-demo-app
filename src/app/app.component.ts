@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // TEMP LOGS
+    console.log('environment.azureClientId: ', environment.azureClientId);
+    console.log('environment.azureTenant: ', environment.azureTenant);
+
     this.adalService.handleWindowCallback();
     this.adalService.getUser();
   }
