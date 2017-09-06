@@ -112,9 +112,7 @@ selectNodeVersion
 # 3. Install npm packages, and @angular/cli + @angular/compiler-cli from devDependencies
 if [ -e "$DEPLOYMENT_TARGET/package.json" ]; then
   cd "$DEPLOYMENT_TARGET"
-  eval $NPM_CMD install --production
-  eval $NPM_CMD install --only=dev @angular/cli
-  eval $NPM_CMD install --only=dev @angular/compiler-cli
+  eval $NPM_CMD install
   exitWithMessageOnError "npm install failed"
   cd - > /dev/null
 fi
@@ -124,6 +122,14 @@ if [ -e "$DEPLOYMENT_TARGET/.angular-cli.json" ]; then
   cd "$DEPLOYMENT_TARGET"
   eval $NPM_CMD run build-prod
   exitWithMessageOnError "npm run build-prod failed"
+  cd - > /dev/null
+fi
+
+# 4. Build the Angular app (production mode)
+if [ -e "$DEPLOYMENT_TARGET/.angular-cli.json" ]; then
+  cd "$DEPLOYMENT_TARGET"
+  eval $NPM_CMD prune --prod
+  exitWithMessageOnError "npm prune --prod failed"
   cd - > /dev/null
 fi
 
